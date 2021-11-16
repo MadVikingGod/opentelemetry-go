@@ -136,6 +136,7 @@ test-coverage: | $(GOCOVMERGE)
 
 .PHONY: lint
 lint: misspell lint-modules | $(GOLANGCI_LINT)
+	$(GOLANGCI_LINT) --version
 	set -e; for dir in $(ALL_GO_MOD_DIRS); do \
 	  echo "golangci-lint in $${dir}"; \
 	  (cd "$${dir}" && \
