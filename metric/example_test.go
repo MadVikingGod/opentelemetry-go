@@ -22,6 +22,7 @@ import (
 
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/metric/instrument"
+	"go.opentelemetry.io/otel/metric/instrument/asyncint64"
 	"go.opentelemetry.io/otel/metric/instrument/syncfloat64"
 	"go.opentelemetry.io/otel/metric/unit"
 )
@@ -51,26 +52,19 @@ func ExampleAsyncInstrument() {
 	meterProvider := metric.NewNoopMeterProvider()
 	meter := meterProvider.Meter("AsyncExample")
 
-	memoryUsage, err := meter.AsyncInt64().Gauge(
+	_, err := meter.AsyncInt64().Gauge(
 		"MemoryUsage",
 		instrument.WithUnit(unit.Bytes),
-	)
-	if err != nil {
-		fmt.Println("Failed to register instrument")
-		panic(err)
-	}
-
-	err = meter.RegisterCallback([]instrument.Asynchronous{memoryUsage},
-		func(ctx context.Context) {
-			// instrument.WithCallbackFunc(func(ctx context.Context) {
+		asyncint64.WithGaugeCallback(func(ctx context.Context, memoryUsage asyncint64.Gauge) {
 			//Do Work to get the real memoryUsage
 			// mem := GatherMemory(ctx)
 			mem := 75000
 
 			memoryUsage.Observe(ctx, int64(mem))
-		})
+		}),
+	)
 	if err != nil {
-		fmt.Println("Failed to register callback")
+		fmt.Println("Failed to register instrument")
 		panic(err)
 	}
 }
