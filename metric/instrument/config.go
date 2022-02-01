@@ -37,6 +37,12 @@ func (cfg Config) Unit() unit.Unit {
 	return cfg.unit
 }
 
+// Callback returns the function that will be registered on asynchronous
+// instrument creation.
+func (cfg Config) Callback() func(context.Context, Asynchronous) {
+	return cfg.callback
+}
+
 // Option is an interface for applying metric instrument options.
 type Option interface {
 	// ApplyMeter is used to set a Option value of a
