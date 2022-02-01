@@ -68,3 +68,25 @@ type Gauge interface {
 
 	instrument.Asynchronous
 }
+
+func WithCounterCallback(fn func(context.Context, Counter)) instrument.Option {
+	return instrument.WithCallback(func(ctx context.Context, inst instrument.Asynchronous) {
+		if counter, ok := inst.(Counter); ok {
+			fn(ctx, counter)
+		}
+	})
+}
+func WithUpDownCounterCallback(fn func(context.Context, UpDownCounter)) instrument.Option {
+	return instrument.WithCallback(func(ctx context.Context, inst instrument.Asynchronous) {
+		if counter, ok := inst.(UpDownCounter); ok {
+			fn(ctx, counter)
+		}
+	})
+}
+func WithGaugeCallback(fn func(context.Context, Gauge)) instrument.Option {
+	return instrument.WithCallback(func(ctx context.Context, inst instrument.Asynchronous) {
+		if gauge, ok := inst.(Gauge); ok {
+			fn(ctx, gauge)
+		}
+	})
+}

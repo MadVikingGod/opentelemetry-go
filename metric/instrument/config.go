@@ -14,12 +14,17 @@
 
 package instrument // import "go.opentelemetry.io/otel/metric/instrument"
 
-import "go.opentelemetry.io/otel/metric/unit"
+import (
+	"go.opentelemetry.io/otel/metric/unit"
+	"golang.org/x/net/context"
+)
 
 // Config contains options for metric instrument descriptors.
 type Config struct {
 	description string
 	unit        unit.Unit
+
+	callback func(context.Context, Asynchronous)
 }
 
 // Description describes the instrument in human-readable terms.
@@ -66,5 +71,11 @@ func WithDescription(desc string) Option {
 func WithUnit(unit unit.Unit) Option {
 	return optionFunc(func(cfg *Config) {
 		cfg.unit = unit
+	})
+}
+
+func WithCallback(fn func(context.Context, Asynchronous)) Option {
+	return optionFunc(func(cfg *Config) {
+		cfg.callback = fn
 	})
 }
