@@ -26,7 +26,6 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	ottest "go.opentelemetry.io/otel/internal/internaltest"
 	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/metric/sdkapi"
 	"go.opentelemetry.io/otel/sdk/instrumentation"
 	controller "go.opentelemetry.io/otel/sdk/metric/controller/basic"
 	"go.opentelemetry.io/otel/sdk/metric/controller/controllertest"
@@ -34,6 +33,7 @@ import (
 	"go.opentelemetry.io/otel/sdk/metric/export/aggregation"
 	processor "go.opentelemetry.io/otel/sdk/metric/processor/basic"
 	"go.opentelemetry.io/otel/sdk/metric/processor/processortest"
+	"go.opentelemetry.io/otel/sdk/metric/sdkapi"
 	"go.opentelemetry.io/otel/sdk/resource"
 )
 
@@ -127,7 +127,7 @@ func TestControllerUsesResource(t *testing.T) {
 			ctx := context.Background()
 			require.NoError(t, cont.Start(ctx))
 
-			ctr := metric.Must(cont.Meter("named")).NewFloat64Counter("calls.sum")
+			ctr, _ := cont.Meter("named").SyncFloat64().Counter("calls.sum")
 			ctr.Add(context.Background(), 1.)
 
 			// Collect once
