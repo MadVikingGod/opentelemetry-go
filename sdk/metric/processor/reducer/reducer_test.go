@@ -18,7 +18,6 @@ import (
 	"context"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
 	"go.opentelemetry.io/otel/attribute"
@@ -60,16 +59,17 @@ func generateData(t *testing.T, impl sdkapi.MeterImpl) {
 	meter := sdkapi.WrapMeterImpl(impl)
 
 	counter, err := meter.SyncFloat64().Counter("counter.sum")
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	counter.Add(ctx, 100, kvs1...)
 	counter.Add(ctx, 100, kvs2...)
 
 	counterObserver, err := meter.AsyncInt64().Counter("observer.sum")
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	err = meter.RegisterCallback([]instrument.Asynchronous{counterObserver}, func(ctx context.Context) {
 		counterObserver.Observe(ctx, 10, kvs1...)
 		counterObserver.Observe(ctx, 10, kvs2...)
 	})
+	require.NoError(t, err)
 }
 
 func TestFilterProcessor(t *testing.T) {

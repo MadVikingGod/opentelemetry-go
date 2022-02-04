@@ -22,7 +22,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
 	"go.opentelemetry.io/otel/attribute"
@@ -455,11 +454,12 @@ func TestCounterObserverEndToEnd(t *testing.T) {
 
 	var calls int64
 	ctr, err := meter.AsyncInt64().Counter("observer.sum")
-	assert.NoError(t, err)
-	meter.RegisterCallback([]instrument.Asynchronous{ctr}, func(ctx context.Context) {
+	require.NoError(t, err)
+	err = meter.RegisterCallback([]instrument.Asynchronous{ctr}, func(ctx context.Context) {
 		calls++
 		ctr.Observe(ctx, calls)
 	})
+	require.NoError(t, err)
 	reader := proc.Reader()
 
 	var startTime [3]time.Time

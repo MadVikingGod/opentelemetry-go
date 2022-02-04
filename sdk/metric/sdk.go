@@ -56,11 +56,6 @@ type (
 
 		// collectLock prevents simultaneous calls to Collect().
 		collectLock sync.Mutex
-
-		// asyncSortSlice has a single purpose - as a temporary
-		// place for sorting during labels creation to avoid
-		// allocation.  It is cleared after use.
-		asyncSortSlice attribute.Sortable
 	}
 
 	callback struct {
@@ -138,8 +133,8 @@ var (
 	ErrBadInstrument = fmt.Errorf("use of a instrument from another SDK")
 )
 
-func (inst *baseInstrument) Descriptor() sdkapi.Descriptor {
-	return inst.descriptor
+func (b *baseInstrument) Descriptor() sdkapi.Descriptor {
+	return b.descriptor
 }
 
 func (a *asyncInstrument) Implementation() interface{} {
@@ -149,48 +144,6 @@ func (a *asyncInstrument) Implementation() interface{} {
 func (s *syncInstrument) Implementation() interface{} {
 	return s
 }
-
-// func (a *asyncInstrument) observe(num number.Number, labels *attribute.Set) {
-// 	if err := aggregator.RangeTest(num, &a.descriptor); err != nil {
-// 		otel.Handle(err)
-// 		return
-// 	}
-// 	recorder := a.getRecorder(labels)
-// 	if recorder == nil {
-// 		// The instrument is disabled according to the
-// 		// AggregatorSelector.
-// 		return
-// 	}
-// 	if err := recorder.Update(context.Background(), num, &a.descriptor); err != nil {
-// 		otel.Handle(err)
-// 		return
-// 	}
-// }
-
-// func (a *asyncInstrument) getRecorder(labels *attribute.Set) aggregator.Aggregator {
-// 	lrec, ok := a.recorders[labels.Equivalent()]
-// 	if ok {
-// 		// Note: SynchronizedMove(nil) can't return an error
-// 		_ = lrec.observed.SynchronizedMove(nil, &a.descriptor)
-// 		lrec.observedEpoch = a.meter.currentEpoch
-// 		a.recorders[labels.Equivalent()] = lrec
-// 		return lrec.observed
-// 	}
-// 	var rec aggregator.Aggregator
-// 	a.meter.processor.AggregatorFor(&a.descriptor, &rec)
-// 	if a.recorders == nil {
-// 		a.recorders = make(map[attribute.Distinct]*labeledRecorder)
-// 	}
-// 	// This may store nil recorder in the map, thus disabling the
-// 	// asyncInstrument for the labelset for good. This is intentional,
-// 	// but will be revisited later.
-// 	a.recorders[labels.Equivalent()] = &labeledRecorder{
-// 		observed:      rec,
-// 		labels:        labels,
-// 		observedEpoch: a.meter.currentEpoch,
-// 	}
-// 	return rec
-// }
 
 // acquireHandle gets or creates a `*record` corresponding to `kvs`,
 // the input labels.
@@ -263,8 +216,8 @@ func (s *syncInstrument) RecordOne(ctx context.Context, num number.Number, kvs [
 }
 
 // @@@
-func (i *asyncInstrument) ObserveOne(ctx context.Context, num number.Number, attrs []attribute.KeyValue) {
-	h := i.acquireHandle(attrs)
+func (a *asyncInstrument) ObserveOne(ctx context.Context, num number.Number, attrs []attribute.KeyValue) {
+	h := a.acquireHandle(attrs)
 	defer h.unbind()
 	h.captureOne(ctx, num)
 }
@@ -400,7 +353,7 @@ func (m *Accumulator) runAsyncCallbacks(ctx context.Context) {
 
 	ctx = context.WithValue(ctx, asyncContextKey{}, m)
 
-	for cb, _ := range m.callbacks {
+	for cb := range m.callbacks {
 		cb.f(ctx)
 	}
 }
@@ -455,12 +408,13 @@ func (r *record) mapkey() mapkey {
 // fromSync gets an async implementation object, checking for
 // uninitialized instruments and instruments created by another SDK.
 func (m *Accumulator) fromAsync(async sdkapi.AsyncImpl) (*asyncInstrument, error) {
-	if async != nil {
-		if inst, ok := async.Implementation().(*asyncInstrument); ok {
-			return inst, nil
-		} else {
-			return nil, ErrBadInstrument
-		}
+	if async == nil {
+		return nil, ErrUninitializedInstrument
 	}
-	return nil, ErrUninitializedInstrument
+	inst, ok := async.Implementation().(*asyncInstrument)
+	if !ok {
+		return nil, ErrBadInstrument
+	}
+	return inst, nil
+
 }

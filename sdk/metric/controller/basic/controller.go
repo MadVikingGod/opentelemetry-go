@@ -109,6 +109,8 @@ type accumulatorCheckpointer struct {
 	library      instrumentation.Library
 }
 
+var _ sdkapi.MeterImpl = &accumulatorCheckpointer{}
+
 // New constructs a Controller using the provided checkpointer factory
 // and options (including optional exporter) to configure a metric
 // export pipeline.
