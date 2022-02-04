@@ -367,15 +367,15 @@ func TestObserverCollection(t *testing.T) {
 			"int.gauge.lastvalue//":      mult,
 			"int.gauge.lastvalue/A=B/":   mult,
 
-			"float.counterobserver.sum/A=B/": 2 * mult,
+			"float.counterobserver.sum/A=B/": 3 * mult,
 			"float.counterobserver.sum/C=D/": mult,
-			"int.counterobserver.sum//":      mult,
-			"int.counterobserver.sum/A=B/":   mult,
+			"int.counterobserver.sum//":      2 * mult,
+			"int.counterobserver.sum/A=B/":   3 * mult,
 
-			"float.updowncounterobserver.sum/A=B/": -2 * mult,
+			"float.updowncounterobserver.sum/A=B/": -mult,
 			"float.updowncounterobserver.sum/C=D/": mult,
-			"int.updowncounterobserver.sum//":      -mult,
-			"int.updowncounterobserver.sum/A=B/":   mult,
+			"int.updowncounterobserver.sum//":      0,
+			"int.updowncounterobserver.sum/A=B/":   3 * mult,
 		}, processor.Values())
 	}
 }
@@ -504,31 +504,36 @@ func TestIncorrectInstruments(t *testing.T) {
 	meter, sdk, _, processor := newSDK(t)
 
 	// Now try with uninitialized instruments.
-	meter.RegisterCallback([]instrument.Asynchronous{
+	err := meter.RegisterCallback([]instrument.Asynchronous{
 		observer,
 	}, func(ctx context.Context) {
 		observer.Observe(ctx, 1)
 	})
+	require.ErrorIs(t, err, metricsdk.ErrBadInstrument)
 
 	collected := sdk.Collect(ctx)
-	require.Equal(t, metricsdk.ErrUninitializedInstrument, testHandler.Flush())
+	err = testHandler.Flush()
+	require.NoError(t, err)
 	require.Equal(t, 0, collected)
 
 	// Now try with instruments from another SDK.
-	var noopMeter metric.Meter
+	noopMeter := metric.NewNoopMeter()
 	observer, _ = noopMeter.AsyncInt64().Gauge("observer")
 
-	meter.RegisterCallback(
+	err = meter.RegisterCallback(
 		[]instrument.Asynchronous{observer},
 		func(ctx context.Context) {
 			observer.Observe(ctx, 1)
 		},
 	)
+	require.ErrorIs(t, err, metricsdk.ErrBadInstrument)
 
 	collected = sdk.Collect(ctx)
 	require.Equal(t, 0, collected)
 	require.EqualValues(t, map[string]float64{}, processor.Values())
-	require.Equal(t, metricsdk.ErrUninitializedInstrument, testHandler.Flush())
+
+	err = testHandler.Flush()
+	require.NoError(t, err)
 }
 
 func TestSyncInAsync(t *testing.T) {

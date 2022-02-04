@@ -23,7 +23,6 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/metric/instrument"
 	"go.opentelemetry.io/otel/sdk/metric/aggregator"
 	"go.opentelemetry.io/otel/sdk/metric/export"
@@ -286,6 +285,8 @@ func NewAccumulator(processor export.Processor) *Accumulator {
 	}
 }
 
+var _ sdkapi.MeterImpl = &Accumulator{}
+
 // NewSyncInstrument implements sdkapi.MetricImpl.
 func (m *Accumulator) NewSyncInstrument(descriptor sdkapi.Descriptor) (sdkapi.SyncImpl, error) {
 	return &syncInstrument{
@@ -307,7 +308,7 @@ func (m *Accumulator) NewAsyncInstrument(descriptor sdkapi.Descriptor) (sdkapi.A
 	return a, nil
 }
 
-func (m *Accumulator) RegisterCallback(insts []instrument.Asynchronous, f func(context.Context)) (metric.Callback, error) {
+func (m *Accumulator) RegisterCallback(insts []instrument.Asynchronous, f func(context.Context)) error {
 	cb := &callback{
 		insts: map[*asyncInstrument]struct{}{},
 		f:     f,
@@ -315,12 +316,12 @@ func (m *Accumulator) RegisterCallback(insts []instrument.Asynchronous, f func(c
 	for _, inst := range insts {
 		impl, ok := inst.(sdkapi.AsyncImpl)
 		if !ok {
-			return nil, ErrBadInstrument
+			return ErrBadInstrument
 		}
 
 		ai, err := m.fromAsync(impl)
 		if err != nil {
-			return nil, err
+			return err
 		}
 		cb.insts[ai] = struct{}{}
 	}
@@ -328,7 +329,7 @@ func (m *Accumulator) RegisterCallback(insts []instrument.Asynchronous, f func(c
 	m.callbackLock.Lock()
 	defer m.callbackLock.Unlock()
 	m.callbacks[cb] = struct{}{}
-	return cb, nil
+	return nil
 }
 
 // Collect traverses the list of active records and observers and

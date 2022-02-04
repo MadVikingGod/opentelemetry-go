@@ -15,14 +15,13 @@
 package registry_test
 
 import (
-	"context"
 	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
 	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/sdk/metric/metrictest"
+	metricsdk "go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/metric/registry"
 	"go.opentelemetry.io/otel/sdk/metric/sdkapi"
 )
@@ -34,22 +33,22 @@ type (
 var (
 	allNew = map[string]newFunc{
 		"counter.int64": func(m metric.Meter, name string) (sdkapi.InstrumentImpl, error) {
-			return unwrap(m.NewInt64Counter(name))
+			return unwrap(m.SyncInt64().Counter(name))
 		},
 		"counter.float64": func(m metric.Meter, name string) (sdkapi.InstrumentImpl, error) {
-			return unwrap(m.NewFloat64Counter(name))
+			return unwrap(m.SyncFloat64().Counter(name))
 		},
 		"histogram.int64": func(m metric.Meter, name string) (sdkapi.InstrumentImpl, error) {
-			return unwrap(m.NewInt64Histogram(name))
+			return unwrap(m.SyncInt64().Histogram(name))
 		},
 		"histogram.float64": func(m metric.Meter, name string) (sdkapi.InstrumentImpl, error) {
-			return unwrap(m.NewFloat64Histogram(name))
+			return unwrap(m.SyncFloat64().Histogram(name))
 		},
 		"gaugeobserver.int64": func(m metric.Meter, name string) (sdkapi.InstrumentImpl, error) {
-			return unwrap(m.NewInt64GaugeObserver(name, func(context.Context, metric.Int64ObserverResult) {}))
+			return unwrap(m.AsyncInt64().Gauge(name))
 		},
 		"gaugeobserver.float64": func(m metric.Meter, name string) (sdkapi.InstrumentImpl, error) {
-			return unwrap(m.NewFloat64GaugeObserver(name, func(context.Context, metric.Float64ObserverResult) {}))
+			return unwrap(m.AsyncFloat64().Gauge(name))
 		},
 	}
 )
@@ -71,10 +70,11 @@ func unwrap(impl interface{}, err error) (sdkapi.InstrumentImpl, error) {
 	return nil, err
 }
 
+// TODO Replace with controller
 func testMeterWithRegistry(name string) metric.Meter {
-	return metric.WrapMeterImpl(
+	return sdkapi.WrapMeterImpl(
 		registry.NewUniqueInstrumentMeterImpl(
-			metrictest.NewMeterProvider().Meter(name).MeterImpl(),
+			metricsdk.NewAccumulator(nil),
 		),
 	)
 }
@@ -88,21 +88,6 @@ func TestRegistrySameInstruments(t *testing.T) {
 		require.NoError(t, err1)
 		require.NoError(t, err2)
 		require.Equal(t, inst1, inst2)
-	}
-}
-
-func TestRegistryDifferentNamespace(t *testing.T) {
-	for _, nf := range allNew {
-		provider := metrictest.NewMeterProvider()
-
-		meter1 := provider.Meter("meter1")
-		meter2 := provider.Meter("meter2")
-		inst1, err1 := nf(meter1, "this")
-		inst2, err2 := nf(meter2, "this")
-
-		require.NoError(t, err1)
-		require.NoError(t, err2)
-		require.NotEqual(t, inst1, inst2)
 	}
 }
 
@@ -120,7 +105,7 @@ func TestRegistryDiffInstruments(t *testing.T) {
 
 			other, err := nf(meter, "this")
 			require.Error(t, err)
-			require.NotNil(t, other)
+			require.Nil(t, other)
 			require.True(t, errors.Is(err, registry.ErrMetricKindMismatch))
 		}
 	}

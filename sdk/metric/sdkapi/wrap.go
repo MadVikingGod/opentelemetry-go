@@ -56,7 +56,7 @@ func (m meter) SyncInt64() syncint64.Instruments {
 	return siMeter{m}
 }
 
-func (m meter) RegisterCallback(insts []instrument.Asynchronous, cb func(ctx context.Context)) (metric.Callback, error) {
+func (m meter) RegisterCallback(insts []instrument.Asynchronous, cb func(ctx context.Context)) error {
 	return m.MeterImpl.RegisterCallback(insts, cb)
 }
 

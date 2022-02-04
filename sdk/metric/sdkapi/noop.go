@@ -14,53 +14,70 @@
 
 package sdkapi // import "go.opentelemetry.io/otel/sdk/metric/sdkapi"
 
-// import (
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric/instrument"
+	"go.opentelemetry.io/otel/sdk/metric/number"
+) // import (
 // 	"context"
 
 // 	"go.opentelemetry.io/otel/attribute"
 // 	"go.opentelemetry.io/otel/sdk/metric/number"
 // )
 
-// type noopInstrument struct {
-// 	descriptor Descriptor
-// }
-// type noopSyncInstrument struct{ noopInstrument }
-// type noopAsyncInstrument struct{ noopInstrument }
+type noopInstrument struct {
+	descriptor Descriptor
+}
+type noopSyncInstrument struct {
+	noopInstrument
 
-// var _ SyncImpl = noopSyncInstrument{}
-// var _ AsyncImpl = noopAsyncInstrument{}
+	instrument.Synchronous
+}
+type noopAsyncInstrument struct {
+	noopInstrument
 
-// // NewNoopSyncInstrument returns a No-op implementation of the
-// // synchronous instrument interface.
-// func NewNoopSyncInstrument() SyncImpl {
-// 	return noopSyncInstrument{
-// 		noopInstrument{
-// 			descriptor: Descriptor{
-// 				instrumentKind: CounterInstrumentKind,
-// 			},
-// 		},
-// 	}
-// }
+	instrument.Asynchronous
+}
 
-// // NewNoopAsyncInstrument returns a No-op implementation of the
-// // asynchronous instrument interface.
-// func NewNoopAsyncInstrument() AsyncImpl {
-// 	return noopAsyncInstrument{
-// 		noopInstrument{
-// 			descriptor: Descriptor{
-// 				instrumentKind: CounterObserverInstrumentKind,
-// 			},
-// 		},
-// 	}
-// }
+var _ SyncImpl = noopSyncInstrument{}
+var _ AsyncImpl = noopAsyncInstrument{}
 
-// func (noopInstrument) Implementation() interface{} {
-// 	return nil
-// }
+// NewNoopSyncInstrument returns a No-op implementation of the
+// synchronous instrument interface.
+func NewNoopSyncInstrument() SyncImpl {
+	return noopSyncInstrument{
+		noopInstrument: noopInstrument{
+			descriptor: Descriptor{
+				instrumentKind: CounterInstrumentKind,
+			},
+		},
+	}
+}
 
-// func (n noopInstrument) Descriptor() Descriptor {
-// 	return n.descriptor
-// }
+// NewNoopAsyncInstrument returns a No-op implementation of the
+// asynchronous instrument interface.
+func NewNoopAsyncInstrument() AsyncImpl {
+	return noopAsyncInstrument{
+		noopInstrument: noopInstrument{
+			descriptor: Descriptor{
+				instrumentKind: CounterObserverInstrumentKind,
+			},
+		},
+	}
+}
 
-// func (noopSyncInstrument) RecordOne(context.Context, number.Number, []attribute.KeyValue) {
-// }
+func (noopInstrument) Implementation() interface{} {
+	return nil
+}
+
+func (n noopInstrument) Descriptor() Descriptor {
+	return n.descriptor
+}
+
+func (noopSyncInstrument) RecordOne(context.Context, number.Number, []attribute.KeyValue) {
+}
+
+func (noopAsyncInstrument) ObserveOne(ctx context.Context, number number.Number, labels []attribute.KeyValue) {
+}

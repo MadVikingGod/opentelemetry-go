@@ -18,7 +18,6 @@ import (
 	"context"
 
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/metric/instrument"
 	"go.opentelemetry.io/otel/sdk/metric/number"
 )
@@ -37,7 +36,7 @@ type MeterImpl interface {
 	NewAsyncInstrument(descriptor Descriptor) (AsyncImpl, error)
 
 	// Etc.
-	RegisterCallback(insts []instrument.Asynchronous, callback func(context.Context)) (metric.Callback, error)
+	RegisterCallback(insts []instrument.Asynchronous, callback func(context.Context)) error
 }
 
 // InstrumentImpl is a common interface for synchronous and
