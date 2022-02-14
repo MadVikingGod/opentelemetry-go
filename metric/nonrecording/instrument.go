@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package nonrecording // import "go.opentelemetry.io/otel/metric/instrument/nonrecording"
+package nonrecording // import "go.opentelemetry.io/otel/metric/nonrecording"
 
 import (
 	"context"

@@ -33,26 +33,27 @@ type MeterProvider interface {
 
 // Meter provides access to instrument instances for recording metrics.
 type Meter interface {
-	// AsyncInt64 is the namespace for the Asynchronous Integer instruments.
-	//
-	// To Observe data with instruments it must be registered in a callback.
-	AsyncInt64() Int64ObserverInstruments
+	// Float64 is the namespace for the Synchronous Float instruments
+	Float64() Float64Instruments
 
-	// AsyncFloat64 is the namespace for the Asynchronous Float instruments
+	// Int64 is the namespace for the Synchronous Integer instruments
+	Int64() Int64Instruments
+
+	// Float64Observer is the namespace for the Asynchronous Float instruments
 	//
 	// To Observe data with instruments it must be registered in a callback.
-	AsyncFloat64() Float64ObserverInstruments
+	Float64Observer() Float64ObserverInstruments
+
+	// Int64Observer is the namespace for the Asynchronous Integer instruments.
+	//
+	// To Observe data with instruments it must be registered in a callback.
+	Int64Observer() Int64ObserverInstruments
 
 	// RegisterCallback captures the function that will be called during Collect.
 	//
 	// It is only valid to call Observe within the scope of the passed function,
 	// and only on the instruments that were registered with this call.
 	RegisterCallback(insts []instrument.Asynchronous, function func(context.Context)) error
-
-	// SyncInt64 is the namespace for the Synchronous Integer instruments
-	SyncInt64() Int64Instruments
-	// SyncFloat64 is the namespace for the Synchronous Float instruments
-	SyncFloat64() Float64Instruments
 }
 
 // Instruments provides access to individual instruments.

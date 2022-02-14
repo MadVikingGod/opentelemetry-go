@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package nonrecording // import "go.opentelemetry.io/otel/metric/instrument/nonrecording"
+package nonrecording // import "go.opentelemetry.io/otel/metric/nonrecording"
 
 import (
 	"context"
@@ -37,16 +37,16 @@ type noopMeter struct{}
 
 var _ metric.Meter = noopMeter{}
 
-func (noopMeter) AsyncInt64() metric.Int64ObserverInstruments {
+func (noopMeter) Int64Observer() metric.Int64ObserverInstruments {
 	return NewNoopInt64ObserverInstruments()
 }
-func (noopMeter) AsyncFloat64() metric.Float64ObserverInstruments {
+func (noopMeter) Float64Observer() metric.Float64ObserverInstruments {
 	return NewNoopFloat64ObserverInstruments()
 }
-func (noopMeter) SyncInt64() metric.Int64Instruments {
+func (noopMeter) Int64() metric.Int64Instruments {
 	return NewNoopInt64Instruments()
 }
-func (noopMeter) SyncFloat64() metric.Float64Instruments {
+func (noopMeter) Float64() metric.Float64Instruments {
 	return NewNoopFloat64Instruments()
 }
 func (noopMeter) RegisterCallback([]instrument.Asynchronous, func(context.Context)) error {
