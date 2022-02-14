@@ -12,45 +12,42 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package metric // import "go.opentelemetry.io/otel/metric"
+package nonrecording // import "go.opentelemetry.io/otel/metric/instrument/nonrecording"
 
 import (
 	"context"
 
+	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/metric/instrument"
-	"go.opentelemetry.io/otel/metric/instrument/asyncfloat64"
-	"go.opentelemetry.io/otel/metric/instrument/asyncint64"
-	"go.opentelemetry.io/otel/metric/instrument/syncfloat64"
-	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 )
 
-func NewNoopMeterProvider() MeterProvider {
+func NewNoopMeterProvider() metric.MeterProvider {
 	return noopMeterProvider{}
 }
 
 type noopMeterProvider struct{}
 
-var _ MeterProvider = noopMeterProvider{}
+var _ metric.MeterProvider = noopMeterProvider{}
 
-func (noopMeterProvider) Meter(instrumentationName string, opts ...MeterOption) Meter {
+func (noopMeterProvider) Meter(instrumentationName string, opts ...metric.MeterOption) metric.Meter {
 	return noopMeter{}
 }
 
 type noopMeter struct{}
 
-var _ Meter = noopMeter{}
+var _ metric.Meter = noopMeter{}
 
-func (noopMeter) AsyncInt64() asyncint64.Instruments {
-	return asyncint64.NewNoopInstruments()
+func (noopMeter) AsyncInt64() metric.Int64ObserverInstruments {
+	return NewNoopInt64ObserverInstruments()
 }
-func (noopMeter) AsyncFloat64() asyncfloat64.Instruments {
-	return asyncfloat64.NewNoopInstruments()
+func (noopMeter) AsyncFloat64() metric.Float64ObserverInstruments {
+	return NewNoopFloat64ObserverInstruments()
 }
-func (noopMeter) SyncInt64() syncint64.Instruments {
-	return syncint64.NewNoopInstruments()
+func (noopMeter) SyncInt64() metric.Int64Instruments {
+	return NewNoopInt64Instruments()
 }
-func (noopMeter) SyncFloat64() syncfloat64.Instruments {
-	return syncfloat64.NewNoopInstruments()
+func (noopMeter) SyncFloat64() metric.Float64Instruments {
+	return NewNoopFloat64Instruments()
 }
 func (noopMeter) RegisterCallback([]instrument.Asynchronous, func(context.Context)) error {
 	return nil

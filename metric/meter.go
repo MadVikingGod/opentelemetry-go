@@ -18,10 +18,6 @@ import (
 	"context"
 
 	"go.opentelemetry.io/otel/metric/instrument"
-	"go.opentelemetry.io/otel/metric/instrument/asyncfloat64"
-	"go.opentelemetry.io/otel/metric/instrument/asyncint64"
-	"go.opentelemetry.io/otel/metric/instrument/syncfloat64"
-	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 )
 
 // MeterProvider provides access to named Meter instances, for instrumenting
@@ -40,12 +36,12 @@ type Meter interface {
 	// AsyncInt64 is the namespace for the Asynchronous Integer instruments.
 	//
 	// To Observe data with instruments it must be registered in a callback.
-	AsyncInt64() asyncint64.Instruments
+	AsyncInt64() Int64ObserverInstruments
 
 	// AsyncFloat64 is the namespace for the Asynchronous Float instruments
 	//
 	// To Observe data with instruments it must be registered in a callback.
-	AsyncFloat64() asyncfloat64.Instruments
+	AsyncFloat64() Float64ObserverInstruments
 
 	// RegisterCallback captures the function that will be called during Collect.
 	//
@@ -54,7 +50,50 @@ type Meter interface {
 	RegisterCallback(insts []instrument.Asynchronous, function func(context.Context)) error
 
 	// SyncInt64 is the namespace for the Synchronous Integer instruments
-	SyncInt64() syncint64.Instruments
+	SyncInt64() Int64Instruments
 	// SyncFloat64 is the namespace for the Synchronous Float instruments
-	SyncFloat64() syncfloat64.Instruments
+	SyncFloat64() Float64Instruments
+}
+
+// Instruments provides access to individual instruments.
+type Float64ObserverInstruments interface {
+	// Counter creates an instrument for recording increasing values.
+	Counter(name string, opts ...instrument.Option) (instrument.Float64ObserverCounter, error)
+
+	// UpDownCounter creates an instrument for recording changes of a value.
+	UpDownCounter(name string, opts ...instrument.Option) (instrument.Float64ObserverUpDownCounter, error)
+
+	// Gauge creates an instrument for recording the current value.
+	Gauge(name string, opts ...instrument.Option) (instrument.Float64ObserverGauge, error)
+}
+
+type Int64ObserverInstruments interface {
+	// Counter creates an instrument for recording increasing values.
+	Counter(name string, opts ...instrument.Option) (instrument.Int64ObserverCounter, error)
+
+	// UpDownCounter creates an instrument for recording changes of a value.
+	UpDownCounter(name string, opts ...instrument.Option) (instrument.Int64ObserverUpDownCounter, error)
+
+	// Gauge creates an instrument for recording the current value.
+	Gauge(name string, opts ...instrument.Option) (instrument.Int64ObserverGauge, error)
+}
+
+// Instruments provides access to individual instruments.
+type Float64Instruments interface {
+	// Counter creates an instrument for recording increasing values.
+	Counter(name string, opts ...instrument.Option) (instrument.Float64Counter, error)
+	// UpDownCounter creates an instrument for recording changes of a value.
+	UpDownCounter(name string, opts ...instrument.Option) (instrument.Float64UpDownCounter, error)
+	// Histogram creates an instrument for recording a distribution of values.
+	Histogram(name string, opts ...instrument.Option) (instrument.Float64Histogram, error)
+}
+
+// Instruments provides access to individual instruments.
+type Int64Instruments interface {
+	// Counter creates an instrument for recording increasing values.
+	Counter(name string, opts ...instrument.Option) (instrument.Int64Counter, error)
+	// UpDownCounter creates an instrument for recording changes of a value.
+	UpDownCounter(name string, opts ...instrument.Option) (instrument.Int64UpDownCounter, error)
+	// Histogram creates an instrument for recording a distribution of values.
+	Histogram(name string, opts ...instrument.Option) (instrument.Int64Histogram, error)
 }

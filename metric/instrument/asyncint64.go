@@ -12,59 +12,46 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package asyncfloat64 // import "go.opentelemetry.io/otel/metric/instrument/asyncfloat64"
+package instrument // import "go.opentelemetry.io/otel/metric/instrument"
 
 import (
 	"context"
 
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric/instrument"
 )
 
-// Instruments provides access to individual instruments.
-type Instruments interface {
-	// Counter creates an instrument for recording increasing values.
-	Counter(name string, opts ...instrument.Option) (Counter, error)
-
-	// UpDownCounter creates an instrument for recording changes of a value.
-	UpDownCounter(name string, opts ...instrument.Option) (UpDownCounter, error)
-
-	// Gauge creates an instrument for recording the current value.
-	Gauge(name string, opts ...instrument.Option) (Gauge, error)
-}
-
-// Counter is an instrument that records increasing values.
-type Counter interface {
+// Int64ObserverCounter is an instrument that records increasing values.
+type Int64ObserverCounter interface {
 	// Observe records the state of the instrument.
 	//
 	// It is only valid to call this within a callback. If called outside of the
 	// registered callback it should have no effect on the instrument, and an
 	// error will be reported via the error handler.
-	Observe(ctx context.Context, x float64, attrs ...attribute.KeyValue)
+	Observe(ctx context.Context, x int64, attrs ...attribute.KeyValue)
 
-	instrument.Asynchronous
+	Asynchronous
 }
 
-// UpDownCounter is an instrument that records increasing or decresing values.
-type UpDownCounter interface {
+// Int64ObserverUpDownCounter is an instrument that records increasing or decresing values.
+type Int64ObserverUpDownCounter interface {
 	// Observe records the state of the instrument.
 	//
 	// It is only valid to call this within a callback. If called outside of the
 	// registered callback it should have no effect on the instrument, and an
 	// error will be reported via the error handler.
-	Observe(ctx context.Context, x float64, attrs ...attribute.KeyValue)
+	Observe(ctx context.Context, x int64, attrs ...attribute.KeyValue)
 
-	instrument.Asynchronous
+	Asynchronous
 }
 
-// Gauge is an instrument that records independent readings.
-type Gauge interface {
+// Int64ObserverGauge is an instrument that records independent readings.
+type Int64ObserverGauge interface {
 	// Observe records the state of the instrument.
 	//
 	// It is only valid to call this within a callback. If called outside of the
 	// registered callback it should have no effect on the instrument, and an
 	// error will be reported via the error handler.
-	Observe(ctx context.Context, x float64, attrs ...attribute.KeyValue)
+	Observe(ctx context.Context, x int64, attrs ...attribute.KeyValue)
 
-	instrument.Asynchronous
+	Asynchronous
 }

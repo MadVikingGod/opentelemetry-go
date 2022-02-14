@@ -20,15 +20,14 @@ import (
 	"runtime"
 	"time"
 
-	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/metric/instrument"
-	"go.opentelemetry.io/otel/metric/instrument/syncfloat64"
+	"go.opentelemetry.io/otel/metric/instrument/nonrecording"
 	"go.opentelemetry.io/otel/metric/unit"
 )
 
 func ExampleSyncInstrument() {
 	// In a library or program this would be provided by otel.GetMeterProvider().
-	meterProvider := metric.NewNoopMeterProvider()
+	meterProvider := nonrecording.NewNoopMeterProvider()
 
 	workDuration, err := meterProvider.Meter("go.opentelemetry.io/otel/metric#SyncExample").SyncInt64().Histogram(
 		"workDuration",
@@ -48,7 +47,7 @@ func ExampleSyncInstrument() {
 
 func ExampleAsyncInstrument() {
 	// In a library or program this would be provided by otel.GetMeterProvider().
-	meterProvider := metric.NewNoopMeterProvider()
+	meterProvider := nonrecording.NewNoopMeterProvider()
 	meter := meterProvider.Meter("go.opentelemetry.io/otel/metric#AsyncExample")
 
 	memoryUsage, err := meter.AsyncInt64().Gauge(
@@ -76,7 +75,7 @@ func ExampleAsyncInstrument() {
 }
 
 func ExampleMultipleAsyncInstrument() {
-	meterProvider := metric.NewNoopMeterProvider()
+	meterProvider := nonrecording.NewNoopMeterProvider()
 	meter := meterProvider.Meter("go.opentelemetry.io/otel/metric#MultiAsyncExample")
 
 	// This is just a sample of memory stats to record from the Memstats
@@ -108,6 +107,6 @@ func ExampleMultipleAsyncInstrument() {
 }
 
 //This is just an example, see the the contrib runtime instrumentation for real implementation
-func computeGCPauses(ctx context.Context, recorder syncfloat64.Histogram, pauseBuff []uint64) {
+func computeGCPauses(ctx context.Context, recorder instrument.Float64Histogram, pauseBuff []uint64) {
 
 }

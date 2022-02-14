@@ -12,45 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package syncint64 // import "go.opentelemetry.io/otel/metric/instrument/syncint64"
+package instrument // import "go.opentelemetry.io/otel/metric/instrument"
 
 import (
 	"context"
 
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/metric/instrument"
 )
 
-// Instruments provides access to individual instruments.
-type Instruments interface {
-	// Counter creates an instrument for recording increasing values.
-	Counter(name string, opts ...instrument.Option) (Counter, error)
-	// UpDownCounter creates an instrument for recording changes of a value.
-	UpDownCounter(name string, opts ...instrument.Option) (UpDownCounter, error)
-	// Histogram creates an instrument for recording a distribution of values.
-	Histogram(name string, opts ...instrument.Option) (Histogram, error)
-}
-
-// Counter is an instrument that records increasing values.
-type Counter interface {
+// Int64Counter is an instrument that records increasing values.
+type Int64Counter interface {
 	// Add records a change to the counter.
 	Add(ctx context.Context, incr int64, attrs ...attribute.KeyValue)
 
-	instrument.Synchronous
+	Synchronous
 }
 
-// UpDownCounter is an instrument that records increasing or decresing values.
-type UpDownCounter interface {
+// Int64UpDownCounter is an instrument that records increasing or decresing values.
+type Int64UpDownCounter interface {
 	// Add records a change to the counter.
 	Add(ctx context.Context, incr int64, attrs ...attribute.KeyValue)
 
-	instrument.Synchronous
+	Synchronous
 }
 
-// Histogram is an instrument that records a distribution of values.
-type Histogram interface {
+// Int64Histogram is an instrument that records a distribution of values.
+type Int64Histogram interface {
 	// Record adds an additional value to the distribution.
 	Record(ctx context.Context, incr int64, attrs ...attribute.KeyValue)
 
-	instrument.Synchronous
+	Synchronous
 }
