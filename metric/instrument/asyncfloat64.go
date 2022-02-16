@@ -20,8 +20,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 )
 
-// Float64ObserverCounter is an instrument that records increasing values.
-type Float64ObserverCounter interface {
+// ObservableFloat64Counter is an instrument that records increasing values.
+type ObservableFloat64Counter interface {
 	// Observe records the state of the instrument.
 	//
 	// It is only valid to call this within a callback. If called outside of the
@@ -32,8 +32,8 @@ type Float64ObserverCounter interface {
 	Asynchronous
 }
 
-// Float64ObserverUpDownCounter is an instrument that records increasing or decresing values.
-type Float64ObserverUpDownCounter interface {
+// ObservableFloat64UpDownCounter is an instrument that records increasing or decresing values.
+type ObservableFloat64UpDownCounter interface {
 	// Observe records the state of the instrument.
 	//
 	// It is only valid to call this within a callback. If called outside of the
@@ -44,8 +44,8 @@ type Float64ObserverUpDownCounter interface {
 	Asynchronous
 }
 
-// Float64ObserverGauge is an instrument that records independent readings.
-type Float64ObserverGauge interface {
+// ObservableFloat64Gauge is an instrument that records independent readings.
+type ObservableFloat64Gauge interface {
 	// Observe records the state of the instrument.
 	//
 	// It is only valid to call this within a callback. If called outside of the

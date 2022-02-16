@@ -22,31 +22,31 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument"
 )
 
-// NewNoopFloat64ObserverInstruments returns a nonrecording implementation of metric.Float64ObserverInstruments
-func NewNoopFloat64ObserverInstruments() metric.Float64ObserverInstruments {
-	return nonRecordingFloat64ObserverInstrument{}
+// NewNoopObservableFloat64Instruments returns a nonrecording implementation of metric.Float64ObserverInstruments
+func NewNoopObservableFloat64Instruments() metric.ObservableFloat64Instruments {
+	return nonRecordingObservableFloat64Instrument{}
 }
 
 var (
-	_ instrument.Float64ObserverCounter       = nonRecordingFloat64ObserverInstrument{}
-	_ instrument.Float64ObserverUpDownCounter = nonRecordingFloat64ObserverInstrument{}
-	_ instrument.Float64ObserverGauge         = nonRecordingFloat64ObserverInstrument{}
+	_ instrument.ObservableFloat64Counter       = nonRecordingObservableFloat64Instrument{}
+	_ instrument.ObservableFloat64UpDownCounter = nonRecordingObservableFloat64Instrument{}
+	_ instrument.ObservableFloat64Gauge         = nonRecordingObservableFloat64Instrument{}
 )
 
-type nonRecordingFloat64ObserverInstrument struct {
+type nonRecordingObservableFloat64Instrument struct {
 	instrument.Asynchronous
 }
 
-func (i nonRecordingFloat64ObserverInstrument) Counter(name string, opts ...instrument.Option) (instrument.Float64ObserverCounter, error) {
+func (i nonRecordingObservableFloat64Instrument) Counter(name string, opts ...instrument.Option) (instrument.ObservableFloat64Counter, error) {
 	return i, nil
 }
-func (i nonRecordingFloat64ObserverInstrument) UpDownCounter(name string, opts ...instrument.Option) (instrument.Float64ObserverUpDownCounter, error) {
+func (i nonRecordingObservableFloat64Instrument) UpDownCounter(name string, opts ...instrument.Option) (instrument.ObservableFloat64UpDownCounter, error) {
 	return i, nil
 }
-func (i nonRecordingFloat64ObserverInstrument) Gauge(name string, opts ...instrument.Option) (instrument.Float64ObserverGauge, error) {
+func (i nonRecordingObservableFloat64Instrument) Gauge(name string, opts ...instrument.Option) (instrument.ObservableFloat64Gauge, error) {
 	return i, nil
 }
-func (i nonRecordingFloat64ObserverInstrument) Observe(ctx context.Context, x float64, attrs ...attribute.KeyValue) {
+func (i nonRecordingObservableFloat64Instrument) Observe(ctx context.Context, x float64, attrs ...attribute.KeyValue) {
 }
 
 // NewNoopFloat64Instruments returns a nonrecording implementation of metric.Float64ObserverInstruments and metric.Float64Instruments
@@ -78,31 +78,31 @@ func (i nonRecordingFloat64Instrument) Add(ctx context.Context, incr float64, at
 func (i nonRecordingFloat64Instrument) Record(ctx context.Context, incr float64, attrs ...attribute.KeyValue) {
 }
 
-// NewNoopInt64ObserverInstruments returns a nonrecording implementation of metric.Int64ObserverInstruments
-func NewNoopInt64ObserverInstruments() metric.Int64ObserverInstruments {
-	return nonRecordingInt64ObserverInstrument{}
+// NewNoopObservableInt64Instruments returns a nonrecording implementation of metric.Int64ObserverInstruments
+func NewNoopObservableInt64Instruments() metric.ObservableInt64Instruments {
+	return nonRecordingObservableInt64Instrument{}
 }
 
 var (
-	_ instrument.Int64ObserverCounter       = nonRecordingInt64ObserverInstrument{}
-	_ instrument.Int64ObserverUpDownCounter = nonRecordingInt64ObserverInstrument{}
-	_ instrument.Int64ObserverGauge         = nonRecordingInt64ObserverInstrument{}
+	_ instrument.ObservableInt64Counter       = nonRecordingObservableInt64Instrument{}
+	_ instrument.ObservableInt64UpDownCounter = nonRecordingObservableInt64Instrument{}
+	_ instrument.ObservableInt64Gauge         = nonRecordingObservableInt64Instrument{}
 )
 
-type nonRecordingInt64ObserverInstrument struct {
+type nonRecordingObservableInt64Instrument struct {
 	instrument.Asynchronous
 }
 
-func (i nonRecordingInt64ObserverInstrument) Counter(name string, opts ...instrument.Option) (instrument.Int64ObserverCounter, error) {
+func (i nonRecordingObservableInt64Instrument) Counter(name string, opts ...instrument.Option) (instrument.ObservableInt64Counter, error) {
 	return i, nil
 }
-func (i nonRecordingInt64ObserverInstrument) UpDownCounter(name string, opts ...instrument.Option) (instrument.Int64ObserverUpDownCounter, error) {
+func (i nonRecordingObservableInt64Instrument) UpDownCounter(name string, opts ...instrument.Option) (instrument.ObservableInt64UpDownCounter, error) {
 	return i, nil
 }
-func (i nonRecordingInt64ObserverInstrument) Gauge(name string, opts ...instrument.Option) (instrument.Int64ObserverGauge, error) {
+func (i nonRecordingObservableInt64Instrument) Gauge(name string, opts ...instrument.Option) (instrument.ObservableInt64Gauge, error) {
 	return i, nil
 }
-func (i nonRecordingInt64ObserverInstrument) Observe(ctx context.Context, x int64, attrs ...attribute.KeyValue) {
+func (i nonRecordingObservableInt64Instrument) Observe(ctx context.Context, x int64, attrs ...attribute.KeyValue) {
 }
 
 // NewNoopInt64Instruments returns a nonrecording implementation of metric.Int64ObserverInstruments and metric.Int64Instruments

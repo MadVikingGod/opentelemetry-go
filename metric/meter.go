@@ -39,15 +39,15 @@ type Meter interface {
 	// Int64 is the namespace for the Synchronous Integer instruments
 	Int64() Int64Instruments
 
-	// Float64Observer is the namespace for the Asynchronous Float instruments
+	// ObservableFloat64 is the namespace for the Asynchronous Float instruments
 	//
 	// To Observe data with instruments it must be registered in a callback.
-	Float64Observer() Float64ObserverInstruments
+	ObservableFloat64() ObservableFloat64Instruments
 
-	// Int64Observer is the namespace for the Asynchronous Integer instruments.
+	// ObservableInt64 is the namespace for the Asynchronous Integer instruments.
 	//
 	// To Observe data with instruments it must be registered in a callback.
-	Int64Observer() Int64ObserverInstruments
+	ObservableInt64() ObservableInt64Instruments
 
 	// RegisterCallback captures the function that will be called during Collect.
 	//
@@ -57,26 +57,26 @@ type Meter interface {
 }
 
 // Instruments provides access to individual instruments.
-type Float64ObserverInstruments interface {
+type ObservableFloat64Instruments interface {
 	// Counter creates an instrument for recording increasing values.
-	Counter(name string, opts ...instrument.Option) (instrument.Float64ObserverCounter, error)
+	Counter(name string, opts ...instrument.Option) (instrument.ObservableFloat64Counter, error)
 
 	// UpDownCounter creates an instrument for recording changes of a value.
-	UpDownCounter(name string, opts ...instrument.Option) (instrument.Float64ObserverUpDownCounter, error)
+	UpDownCounter(name string, opts ...instrument.Option) (instrument.ObservableFloat64UpDownCounter, error)
 
 	// Gauge creates an instrument for recording the current value.
-	Gauge(name string, opts ...instrument.Option) (instrument.Float64ObserverGauge, error)
+	Gauge(name string, opts ...instrument.Option) (instrument.ObservableFloat64Gauge, error)
 }
 
-type Int64ObserverInstruments interface {
+type ObservableInt64Instruments interface {
 	// Counter creates an instrument for recording increasing values.
-	Counter(name string, opts ...instrument.Option) (instrument.Int64ObserverCounter, error)
+	Counter(name string, opts ...instrument.Option) (instrument.ObservableInt64Counter, error)
 
 	// UpDownCounter creates an instrument for recording changes of a value.
-	UpDownCounter(name string, opts ...instrument.Option) (instrument.Int64ObserverUpDownCounter, error)
+	UpDownCounter(name string, opts ...instrument.Option) (instrument.ObservableInt64UpDownCounter, error)
 
 	// Gauge creates an instrument for recording the current value.
-	Gauge(name string, opts ...instrument.Option) (instrument.Int64ObserverGauge, error)
+	Gauge(name string, opts ...instrument.Option) (instrument.ObservableInt64Gauge, error)
 }
 
 // Instruments provides access to individual instruments.

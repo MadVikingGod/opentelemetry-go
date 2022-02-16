@@ -21,7 +21,7 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel/metric/instrument"
-	"go.opentelemetry.io/otel/metric/instrument/nonrecording"
+	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/metric/unit"
 )
 
@@ -50,7 +50,7 @@ func ExampleAsyncInstrument() {
 	meterProvider := nonrecording.NewNoopMeterProvider()
 	meter := meterProvider.Meter("go.opentelemetry.io/otel/metric#AsyncExample")
 
-	memoryUsage, err := meter.Int64Observer().Gauge(
+	memoryUsage, err := meter.ObservableInt64().Gauge(
 		"MemoryUsage",
 		instrument.WithUnit(unit.Bytes),
 	)
@@ -79,8 +79,8 @@ func ExampleMultipleAsyncInstrument() {
 	meter := meterProvider.Meter("go.opentelemetry.io/otel/metric#MultiAsyncExample")
 
 	// This is just a sample of memory stats to record from the Memstats
-	heapAlloc, _ := meter.Int64Observer().UpDownCounter("heapAllocs")
-	gcCount, _ := meter.Int64Observer().Counter("gcCount")
+	heapAlloc, _ := meter.ObservableInt64().UpDownCounter("heapAllocs")
+	gcCount, _ := meter.ObservableInt64().Counter("gcCount")
 	gcPause, _ := meter.Float64().Histogram("gcPause")
 
 	err := meter.RegisterCallback([]instrument.Asynchronous{
