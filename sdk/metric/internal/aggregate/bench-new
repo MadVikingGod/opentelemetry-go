@@ -1,0 +1,540 @@
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6598200	       185.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3627663	       304.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  658404	      1909 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  882897	      1387 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   57646	     19672 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   95376	     12474 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 7131879	       179.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3481731	       314.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  591369	      1970 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  794918	      1459 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   57656	     20848 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   86034	     13705 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 7145425	       187.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3718106	       286.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  580579	      1977 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  865426	      1390 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   52171	     19994 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   92863	     12525 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 6816508	       182.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3111478	       330.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  590431	      2017 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  777249	      1645 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   58366	     20468 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   77980	     13887 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 7071150	       171.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 4052253	       302.2 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  589857	      1961 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  785764	      1552 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   57344	     20114 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   87436	     13492 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 6522718	       188.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1749187	       681.4 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  587811	      1901 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  291978	      4231 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   51295	     19776 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   29928	     42608 ns/op	    8103 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 6410984	       171.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3477048	       298.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  616105	      1910 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  854629	      1427 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   60250	     20091 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   90374	     13542 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6675076	       176.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1746199	       627.6 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  601671	      1965 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  241819	      4140 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   60109	     19888 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   27123	     43884 ns/op	    8105 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	148.406s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6719391	       174.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 4233105	       305.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  638000	      1864 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  830059	      1368 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   57895	     20672 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   92928	     12796 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 6770887	       188.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3634568	       342.7 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  601440	      1982 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  781152	      1468 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   59042	     21374 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   83883	     13329 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6720499	       181.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3482133	       292.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  637690	      2034 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  850246	      1425 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   50088	     21130 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   99842	     12941 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 7025426	       180.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3200796	       317.1 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  638817	      2025 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  784730	      1525 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   55197	     20199 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   89886	     13496 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 6148731	       173.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3494004	       307.2 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  607858	      2029 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  815364	      1599 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   59314	     21018 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   81651	     14170 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 6747109	       183.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1665078	       652.1 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  601716	      1991 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  265617	      4320 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   49408	     20308 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   27754	     43311 ns/op	    8104 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 6159038	       176.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3597253	       294.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  604708	      1869 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  798901	      1533 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   55702	     20916 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   77596	     13679 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6285948	       176.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1612384	       652.4 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  548613	      2131 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  243637	      4240 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   52326	     20319 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   26054	     42509 ns/op	    8107 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	151.027s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 5847903	       195.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3747231	       308.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  598674	      1991 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  811770	      1488 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   57517	     20946 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   96625	     12426 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 6922977	       186.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3791799	       288.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  529917	      2020 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  803725	      1505 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   52020	     22095 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   91123	     14598 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6578443	       180.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3658360	       282.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  578176	      1950 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  850621	      1404 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   53812	     19770 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   88774	     12971 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 5987628	       188.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3119214	       327.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  581641	      1864 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  785712	      1520 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   49816	     21879 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   90085	     14515 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 5946248	       185.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3502878	       324.7 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  580934	      2196 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  815121	      1520 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   50955	     19660 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   84600	     13970 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 5409555	       187.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1696305	       670.6 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  576830	      1955 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  268527	      4321 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   53085	     21037 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   25555	     43369 ns/op	    8106 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 5655163	       181.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3714813	       291.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  574881	      2001 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  781963	      1466 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   56554	     20268 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   84301	     14196 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6971660	       181.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1682728	       693.1 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  586365	      1969 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  267120	      4192 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   56193	     21265 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   27640	     45888 ns/op	    8102 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	152.979s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6531855	       172.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3575020	       307.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  584182	      2034 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  816903	      1465 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   59876	     19856 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   92374	     12896 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 6530353	       179.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3513716	       305.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  553579	      2001 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  761352	      1521 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   58456	     19900 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   92337	     13812 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6657687	       186.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3322978	       304.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  591844	      2024 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  853437	      1373 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   56655	     21185 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   93925	     12281 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 5746514	       178.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3275906	       347.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  611004	      1964 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  773450	      1502 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   57861	     21053 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   84936	     13748 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 5777430	       182.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3804486	       301.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  562375	      1865 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  764088	      1538 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   59254	     20858 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   86710	     13337 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 6612692	       175.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1725128	       645.3 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  640088	      2042 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  278260	      4310 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   51957	     20771 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   27205	     42870 ns/op	    8105 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 7137476	       171.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3369642	       310.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  574622	      1906 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  759278	      1487 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   50589	     21283 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   88015	     13341 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6852520	       173.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1667769	       664.6 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  638025	      1963 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  282472	      4214 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   59931	     19507 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   25579	     42381 ns/op	    8106 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	153.517s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6469240	       180.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3494184	       308.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  519289	      1968 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  913056	      1402 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   62382	     20318 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   90301	     12219 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 7232318	       177.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3689175	       332.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  603516	      1986 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  791574	      1433 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   50744	     19947 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   90861	     13240 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 7002186	       174.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3723850	       277.0 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  562045	      1908 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  900942	      1373 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   49749	     20536 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   93024	     12880 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 6938109	       168.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3379843	       331.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  601764	      2021 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  756805	      1433 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   51994	     20666 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   79905	     13128 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 5566365	       180.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3631329	       291.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  574113	      2023 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  780708	      1513 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   50078	     20151 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   87117	     13399 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 6446799	       180.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1642293	       712.6 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  578244	      1897 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  268236	      4175 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   51368	     20722 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   26850	     43413 ns/op	    8103 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 5689874	       184.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3986727	       301.7 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  624204	      1990 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  763351	      1506 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   56762	     19946 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   89346	     13591 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6069846	       176.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1837398	       630.9 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  595291	      2042 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  275630	      4484 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   58142	     20255 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   25149	     43277 ns/op	    8104 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	143.834s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6708834	       177.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3453363	       300.1 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  600688	      1971 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  892842	      1384 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   61933	     20207 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   92266	     12324 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 6784947	       179.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 4070144	       273.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  566154	      1926 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  734371	      1539 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   55666	     19744 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   91647	     13489 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 5865608	       174.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 4010068	       280.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  596718	      1921 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  874117	      1359 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   59443	     20962 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   97779	     12334 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 6884284	       167.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3322780	       309.1 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  638858	      1896 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  703148	      1472 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   52381	     21278 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   90596	     13981 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 7096844	       178.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3506943	       293.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  579348	      2001 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  728103	      1553 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   60816	     20444 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   83709	     13978 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 6016917	       183.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1649162	       677.4 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  631024	      1991 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  282205	      4152 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   56266	     19631 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   28294	     41567 ns/op	    8105 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 6793656	       178.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3669712	       278.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  580791	      1960 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  797911	      1494 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   52323	     21448 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   89416	     13530 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 5537817	       188.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1687502	       629.0 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  588518	      1937 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  288883	      4135 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   53396	     20689 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   27079	     42516 ns/op	    8105 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	147.836s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6659530	       176.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3743684	       316.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  597128	      2066 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  898588	      1382 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   55586	     20818 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   98254	     11982 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 5946399	       183.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3759144	       294.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  614251	      1840 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  819378	      1466 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   52092	     19775 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   85771	     13882 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6917253	       182.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 4269375	       288.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  610500	      1958 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  901798	      1363 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   51518	     21361 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   93669	     12340 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 6579976	       174.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3233271	       330.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  572547	      1885 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  795938	      1560 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   53354	     19939 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   87314	     13624 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 7126258	       167.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3305863	       309.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  567493	      2090 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  779728	      1486 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   50497	     20025 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   79755	     14022 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 5728812	       182.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1672039	       674.1 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  587834	      1915 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  273674	      4197 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   60739	     19701 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   28819	     42438 ns/op	    8105 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 5920104	       175.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 4289979	       277.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  585759	      1985 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  732247	      1461 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   51165	     20027 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   89557	     13538 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 5573914	       186.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1946763	       651.4 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  625362	      2052 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  259236	      4398 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   50704	     21817 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   28002	     44323 ns/op	    8104 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	159.742s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 5518185	       190.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 4017993	       321.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  589111	      1883 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  815440	      1479 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   59240	     20262 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   95365	     12203 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 6837406	       182.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3630762	       291.2 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  594234	      2123 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  768925	      1544 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   57646	     20792 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   84760	     13464 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6839922	       165.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3995906	       262.7 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  622509	      1808 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  869432	      1355 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   57793	     20160 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   96370	     12055 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 7098162	       173.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3545808	       287.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  601219	      1942 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  832006	      1398 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   58575	     18951 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   91886	     13257 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 6560590	       172.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 4302231	       279.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  601772	      1897 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  827530	      1584 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   53695	     19444 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   93458	     13178 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 7040802	       174.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1819854	       633.5 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  612036	      1863 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  286178	      4095 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   52605	     19266 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   27914	     39664 ns/op	    8107 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 7219892	       166.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 4519935	       273.5 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  601543	      1878 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  857398	      1406 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   51685	     19743 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   94606	     12830 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6265329	       174.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1919442	       611.1 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  591178	      1853 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  291318	      4081 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   61197	     19395 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   27787	     43418 ns/op	    8105 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	159.411s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 7308306	       183.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3901394	       303.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  599337	      2017 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  820736	      1429 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   56047	     20742 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   95455	     13427 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 6580216	       185.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3542281	       302.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  639429	      1986 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  782931	      1514 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   57646	     20722 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   88903	     14443 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6414205	       191.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3669997	       298.0 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  590173	      2039 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  842329	      1409 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   54888	     20722 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   95391	     13185 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 5817339	       198.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 3140167	       329.8 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  610513	      1957 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  803575	      1488 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   55650	     20522 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   82113	     13748 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 6227232	       190.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3731745	       314.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  574186	      1940 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  753864	      1589 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   57352	     21861 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   88656	     14397 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 5423127	       192.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1588639	       678.1 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  571808	      1944 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  247719	      4294 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   49683	     21874 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   27300	     41556 ns/op	    8104 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 6436375	       175.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3816966	       297.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  604993	      2047 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  798712	      1485 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   56328	     21006 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   91087	     14217 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6383671	       182.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1659942	       648.4 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  574356	      1956 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  285216	      4191 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   48846	     22883 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   25746	     43421 ns/op	    8103 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	146.942s
+goos: linux
+goarch: amd64
+pkg: go.opentelemetry.io/otel/sdk/metric/internal/aggregate
+cpu: AMD Ryzen 7 2700X Eight-Core Processor         
+BenchmarkSum/Int64/Cumulative/1/Measure-16         	 6411931	       183.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/1/ComputeAggregation-16         	 3658297	       311.2 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/10/Measure-16                   	  594330	      2076 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/10/ComputeAggregation-16        	  813751	      1397 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Cumulative/100/Measure-16                  	   50924	     21390 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Cumulative/100/ComputeAggregation-16       	   96777	     12498 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/1/Measure-16                         	 5429691	       185.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/1/ComputeAggregation-16              	 3998971	       286.4 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/10/Measure-16                        	  582336	      1974 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/10/ComputeAggregation-16             	  782100	      1517 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Int64/Delta/100/Measure-16                       	   52886	     20647 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Int64/Delta/100/ComputeAggregation-16            	   89283	     13750 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/1/Measure-16                  	 6404150	       179.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/1/ComputeAggregation-16       	 3618276	       298.1 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/10/Measure-16                 	  575991	      2112 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/10/ComputeAggregation-16      	  851137	      1441 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Cumulative/100/Measure-16                	   54888	     21902 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Cumulative/100/ComputeAggregation-16     	   96501	     13343 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/1/Measure-16                       	 6701808	       192.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/1/ComputeAggregation-16            	 2916054	       369.3 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/10/Measure-16                      	  583873	      2129 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/10/ComputeAggregation-16           	  728062	      1539 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Float64/Delta/100/Measure-16                     	   57016	     21235 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Float64/Delta/100/ComputeAggregation-16          	   83024	     13888 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/Measure-16        	 6301566	       175.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/1/ComputeAggregation-16         	 3476084	       300.9 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/Measure-16                   	  610006	      1988 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/10/ComputeAggregation-16        	  775087	      1574 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/Measure-16                  	   60214	     20151 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Cumulative/100/ComputeAggregation-16       	   81382	     14611 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/Measure-16                         	 6553648	       181.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/1/ComputeAggregation-16              	 1667898	       662.7 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/Measure-16                        	  572475	      2075 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/10/ComputeAggregation-16             	  249780	      4283 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/Measure-16                       	   59991	     20769 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Int64/Delta/100/ComputeAggregation-16            	   24849	     42767 ns/op	    8102 B/op	      10 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/Measure-16                  	 6604456	       183.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/1/ComputeAggregation-16       	 3460418	       298.6 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/Measure-16                 	  530353	      2051 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/10/ComputeAggregation-16      	  792844	      1485 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/Measure-16                	   58746	     20463 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Cumulative/100/ComputeAggregation-16     	   90891	     13707 ns/op	      32 B/op	       1 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/Measure-16                       	 6250742	       176.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/1/ComputeAggregation-16            	 1686254	       662.6 ns/op	     288 B/op	       3 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/Measure-16                      	  604206	      1978 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/10/ComputeAggregation-16           	  267920	      4366 ns/op	     708 B/op	       4 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/Measure-16                     	   56554	     20831 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSum/Precomputed/Float64/Delta/100/ComputeAggregation-16          	   26343	     44254 ns/op	    8101 B/op	      10 allocs/op
+PASS
+ok  	go.opentelemetry.io/otel/sdk/metric/internal/aggregate	148.578s
