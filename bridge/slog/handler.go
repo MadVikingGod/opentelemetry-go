@@ -14,10 +14,13 @@ import (
 
 type handler struct {
 	logger logbridge.Logger
+	level  slog.Level
 	attrs  []attribute.KeyValue
+	prefix string
 }
 
 func NewHandler(opts ...Options) slog.Handler {
+	// TODO: Add the global logbridge provider as a default.
 	h := &handler{}
 	for _, opt := range opts {
 		opt.apply(h)
@@ -37,9 +40,9 @@ func WithLogger(l logbridge.Logger) Options {
 		h.logger = l
 	})
 }
-func WithAttrs(attrs []attribute.KeyValue) Options {
+func WithLevel(l slog.Level) Options {
 	return optionFunc(func(h *handler) {
-		h.attrs = attrs
+		h.level = l
 	})
 }
 
@@ -52,8 +55,8 @@ func WithAttrs(attrs []attribute.KeyValue) Options {
 // or the method does not take a context.
 // The context is passed so Enabled can use its values
 // to make a decision.
-func (h *handler) Enabled(_ context.Context, _ slog.Level) bool {
-	return true
+func (h *handler) Enabled(_ context.Context, lvl slog.Level) bool {
+	return lvl >= h.level
 }
 
 // Handle handles the Record.
@@ -78,7 +81,7 @@ func (h *handler) Handle(ctx context.Context, r slog.Record) error {
 
 	attrs := slices.Clone(h.attrs)
 	r.Attrs(func(a slog.Attr) bool {
-		attrs = append(attrs, convertAttr(a))
+		attrs = append(attrs, convertAttr(h.prefix, a))
 		return true
 	})
 
@@ -98,7 +101,10 @@ func convertLevel(l slog.Level) logbridge.Severity {
 	return logbridge.Severity(l + 9)
 }
 
-func convertAttr(attr slog.Attr) attribute.KeyValue {
+func convertAttr(prefix string, attr slog.Attr) attribute.KeyValue {
+	if prefix != "" {
+		attr.Key = prefix + "." + attr.Key
+	}
 	val := convertValue(attr.Value, false)
 	return attribute.KeyValue{Key: attribute.Key(attr.Key), Value: val}
 }
@@ -137,10 +143,11 @@ func (h *handler) WithAttrs(attrs []slog.Attr) slog.Handler {
 	next := &handler{
 		logger: h.logger,
 		attrs:  slices.Clone(h.attrs),
+		prefix: h.prefix,
 	}
 	next.attrs = slices.Grow(next.attrs, len(attrs))
 	for _, a := range attrs {
-		next.attrs = append(next.attrs, convertAttr(a))
+		next.attrs = append(next.attrs, convertAttr(next.prefix, a))
 	}
 	return next
 }
@@ -165,5 +172,9 @@ func (h *handler) WithAttrs(attrs []slog.Attr) slog.Handler {
 //
 // If the name is empty, WithGroup returns the receiver.
 func (f *handler) WithGroup(name string) slog.Handler {
-	panic("not implemented") // TODO: Implement
+	return &handler{
+		logger: f.logger,
+		attrs:  slices.Clone(f.attrs),
+		prefix: f.prefix + "." + name,
+	}
 }
